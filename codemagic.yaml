@@ -1,0 +1,15 @@
+workflows:
+  android-workflow:
+    name: Build Android APK
+    max_build_duration: 10
+    environment:
+      vars:
+        BUILD_TYPE: release
+      android_signing:
+        use_keystore: false
+    scripts:
+      - name: Build APK
+        script: |
+          ./gradlew assembleRelease
+    artifacts:
+      - app/build/outputs/**/*.apk
